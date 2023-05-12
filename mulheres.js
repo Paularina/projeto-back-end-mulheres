@@ -54,7 +54,41 @@ function criaMulher(request, response) {
 	response.json(mulheres)
 }
 
+//PATCH
+function corrigeMulher(request, response) {
+	function encontraMulher(mulher) {
+		if(mulher.id === request.params.id){
+			return mulher
+		}
+	}
 
+	const mulherEncontrada = mulheres.find(encontraMulher)
+
+	if(request.body.nome){
+		mulherEncontrada.nome = request.body.nome
+	}
+
+	if(request.body.imagem){
+		mulherEncontrada = request.body.imagem
+	}
+
+	if(request.body.minibio){
+		mulherEncontrada.minibio = request.body.minibio
+	}
+
+	response.json(mulheres)
+}
+
+function deletaMulher(request, response) {
+	function todasMenosEla(mulher) {
+		if (mulher.id !== request.params.id) {
+			return mulher
+		}
+	}
+
+	const mulheresQueFicaram = mulheres.filter(todasMenosEla)
+	response.json(mulheresQueFicaram)
+}
 
 //PORTA
 function mostraPorta() {
@@ -66,6 +100,12 @@ app.use(router.get('/mulheres', mostraMulheres))
 
 //rota POST /mulheres
 app.use(router.post('/mulheres',criaMulher))
+
+//rota PATCH /mulheres/:id
+app.use(router.patch('/mulheres/:id', corrigeMulher))
+
+//rota Delete
+app.use(router.delete('/mulheres/:id',deletaMulher))
 
 //Servidor ouvindo a porta
 app.listen(porta, mostraPorta)
