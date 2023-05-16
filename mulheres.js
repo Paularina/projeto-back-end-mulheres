@@ -6,6 +6,10 @@ const router = express.Router()
 
 const {v4: uuidv4} = require('uuid')
 
+//ligando banco de dados
+const conectaBancoDeDados = require('./bancoDeDados')
+conectaBancoDeDados()
+
 //iniciando o app
 const app = express()
 app.use(express.json())
