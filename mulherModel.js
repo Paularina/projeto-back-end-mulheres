@@ -8,7 +8,7 @@ const MulherSchema = new mongoose.Schema({
 
 	imagem: {
 		type: String,
-		required: true,
+		required: false,
 	},
 
 	citacao: {
@@ -19,7 +19,7 @@ const MulherSchema = new mongoose.Schema({
 	minibio: {
 		type: String,
 		required: true
-	},
+	}
 })
 
 module.exports = mongoose.model('diva', MulherSchema)

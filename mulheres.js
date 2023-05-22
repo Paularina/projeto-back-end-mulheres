@@ -4,6 +4,8 @@ const express = require("express")
 //configurando primeira parte da rota
 const router = express.Router()
 
+const cors = require('cors')
+
 //ligando ao arquivo bancoDeDados
 const conectaBancoDeDados = require('./bancoDeDados')
 conectaBancoDeDados()
