@@ -15,6 +15,8 @@ const Mulher = require('./mulherModel')
 //iniciando o app
 const app = express()
 app.use(express.json())
+app.use(cors())
+
 const porta = 3333//criando a porta
 
 //GET
